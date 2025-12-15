@@ -2,12 +2,23 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 from sklearn.model_selection import train_test_split, learning_curve
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, log_loss
+
+
+# import joblib
+#
+# joblib.dump(scaler, "scaler.pkl")
+# joblib.dump(pca, "pca.pkl")
+# joblib.dump(label_encoder, "label_encoder.pkl")
+#
+# joblib.dump(log_reg, "logistic_regression.pkl")
+# joblib.dump(rf, "random_forest.pkl")
 
 # ============================
 # STEP 1: PREPROCESSING
@@ -232,3 +243,20 @@ train_and_evaluate("Random Forest", rf)
 print("\n" + "=" * 70)
 print("All models trained and evaluated successfully!")
 print("=" * 70)
+
+print("=" * 70)
+# ============================
+# SAVE TRAINED MODELS & PREPROCESSING (FOR STREAMLIT)
+# ============================
+
+import joblib
+
+joblib.dump(scaler, "scaler.pkl")
+joblib.dump(pca, "pca.pkl")
+joblib.dump(label_encoder, "label_encoder.pkl")
+
+joblib.dump(log_reg, "logistic_regression.pkl")
+joblib.dump(rf, "random_forest.pkl")
+
+print("Models and preprocessing objects saved successfully!")
+
